@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PC 모니터링 대시보드 | 손승아 포트폴리오</title>
+<meta name="description" content="PC 모니터링 대시보드: 인터넷 없이 도는 내 PC 상태판">
+<meta property="og:title" content="PC 모니터링 대시보드 | 손승아 포트폴리오">
+<meta property="og:description" content="PC 모니터링 대시보드: 인터넷 없이 도는 내 PC 상태판">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="wrap"><nav>
+<a class="logo" href="../index.html">SA<i>.</i></a>
+<a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+<div class="menu"><a href="../index.html#projects">프로젝트</a><a href="../index.html#career">경력</a><a href="../index.html#contact">연락처</a></div>
+</nav></header>
+<main class="wrap detail">
+<div class="head">
+<div>
+<p class="tag">프로젝트 3 / 4</p>
+<h1 class="dh">PC 모니터링 대시보드</h1>
+<p class="one">인터넷 없이 도는 내 PC 상태판</p>
+<div class="pills"><span class="pill">Python</span><span class="pill">Flask</span><span class="pill">psutil</span><span class="pill">SQLite</span><span class="pill">Chart.js</span></div>
+</div>
+<dl class="meta"><dt>기간</dt><dd>2026.06</dd><dt>역할</dt><dd>기획 · 개발 전체</dd><dt>형태</dt><dd>로컬 웹 + 트레이 앱</dd></dl>
+</div>
+<div class="dhero"><img class="web" src="../assets/dashboard.png" alt="PC 모니터링 대시보드 화면"></div>
+
+<section class="dsec">
+<p class="tag">개요</p>
+<h2>동기 · 구현 · 트러블슈팅</h2>
+<div class="three">
+<div><p class="k">동기</p><p class="v">인터넷이 없는 환경에서도 PC 자원 상태를 실시간으로 확인하고 기록을 남기는 로컬 모니터링 도구의 필요</p></div>
+<div><p class="k">구현</p><p class="v">psutil·NVML 기반 1초 간격 수집, 1분 평균 7일 보관, 기간별 차트와 CSV 내보내기, exe 패키징과 시스템 트레이 실행</p></div>
+<div><p class="k">트러블슈팅</p><p class="v">외부 네트워크가 없는 환경에서의 동작 보장. 차트 라이브러리와 아이콘까지 모든 정적 자원을 로컬에서 서빙하도록 구성</p></div>
+</div>
+</section>
+
+<section class="dsec">
+<p class="tag">구조</p>
+<h2>인터넷 없이 로컬에서 전부</h2>
+<div class="dia">
+<div class="cols">
+<p class="colh c1">화면</p><p class="colh c2">서버 · 인증</p><p class="colh c3">저장 · 외부</p>
+<div class="stack s1"><div class="node"><b>대시보드</b><span>Chart.js</span></div></div>
+<div class="link l1" aria-hidden="true"><em>1초마다</em></div>
+<div class="stack s2"><div class="node main"><b>수집기</b><span>Flask · psutil</span></div><div class="node"><b>트레이 실행</b><span>exe</span></div></div>
+<div class="link l2" aria-hidden="true"><em>1분 평균</em></div>
+<div class="stack s3"><div class="node"><b>기록 7일</b><span>SQLite</span></div><div class="node ext"><b>내 PC</b><span>CPU · GPU · 디스크</span></div></div>
+</div>
+<div class="legend"><span><i></i>직접 만든 부분</span><span><i class="e"></i>외부 서비스</span></div>
+</div>
+<div class="gh"><a class="btn fill" href="https://github.com/sonseungah/dashboard" target="_blank" rel="noopener">GitHub 보기 ↗</a></div>
+</section>
+</main>
+<a class="next wrap" href="runelium.html"><span><span class="k">다음 프로젝트</span><span class="t">루넬리움</span></span><span class="arrow" aria-hidden="true">→</span></a>
+<footer class="contact" id="contact"><div class="wrap contact-in">
+<h2>함께 일할<br>자리를 찾고 있어요.</h2>
+<div class="links">
+<a href="mailto:disket0882@gmail.com">disket0882@gmail.com ↗</a>
+<a href="https://github.com/sonseungah" target="_blank" rel="noopener">github.com/sonseungah ↗</a>
+<a href="https://github.com/eggkun1223" target="_blank" rel="noopener">github.com/eggkun1223 ↗</a>
+</div></div></footer>
+</body>
+</html>

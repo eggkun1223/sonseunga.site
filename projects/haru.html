@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>하루 | 손승아 포트폴리오</title>
+<meta name="description" content="하루: 웹과 폰에서 같이 쓰는 기분 일기">
+<meta property="og:title" content="하루 | 손승아 포트폴리오">
+<meta property="og:description" content="하루: 웹과 폰에서 같이 쓰는 기분 일기">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="wrap"><nav>
+<a class="logo" href="../index.html">SA<i>.</i></a>
+<a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+<div class="menu"><a href="../index.html#projects">프로젝트</a><a href="../index.html#career">경력</a><a href="../index.html#contact">연락처</a></div>
+</nav></header>
+<main class="wrap detail">
+<div class="head">
+<div>
+<p class="tag">프로젝트 1 / 4</p>
+<h1 class="dh">하루</h1>
+<p class="one">웹과 폰에서 같이 쓰는 기분 일기</p>
+<div class="pills"><span class="pill">React</span><span class="pill">Expo</span><span class="pill">Express</span><span class="pill">SQLite</span><span class="pill">OAuth</span></div>
+</div>
+<dl class="meta"><dt>기간</dt><dd>2026.07</dd><dt>역할</dt><dd>기획 · 개발 전체</dd><dt>형태</dt><dd>웹 + 모바일 앱</dd></dl>
+</div>
+<div class="dhero has-phone"><img class="web" src="../assets/diary-web-home.png" alt="하루 웹 홈 화면"><img class="phone" src="../assets/diary-mobile-home.png" alt="하루 모바일 앱 홈 화면"></div>
+
+<section class="dsec">
+<p class="tag">개요</p>
+<h2>동기 · 구현 · 트러블슈팅</h2>
+<div class="three">
+<div><p class="k">동기</p><p class="v">개인 기록 습관을 웹과 모바일 어디서든 이어 갈 수 있는 서비스. 기획부터 공개 전 점검까지 풀스택 전 과정을 직접 수행하는 것이 목표</p></div>
+<div><p class="k">구현</p><p class="v">Express REST API와 SQLite 스키마 설계, React 웹·Expo 앱 개발, 이메일 인증과 Google OAuth 로그인 구현, 공개 전 보안 점검</p></div>
+<div><p class="k">트러블슈팅</p><p class="v">웹(쿠키 세션)과 앱(토큰)의 인증 방식 차이. 단일 API에서 두 방식을 모두 검증하도록 인증 계층을 통합</p></div>
+</div>
+</section>
+
+<section class="dsec">
+<p class="tag">구조</p>
+<h2>한 API로 웹과 앱을 함께</h2>
+<div class="dia">
+<div class="cols">
+<p class="colh c1">화면</p><p class="colh c2">서버 · 인증</p><p class="colh c3">저장 · 외부</p>
+<div class="stack s1"><div class="node"><b>웹</b><span>React</span></div><div class="node"><b>앱</b><span>Expo</span></div></div>
+<div class="link l1" aria-hidden="true"><em>쿠키 · 토큰</em></div>
+<div class="stack s2"><div class="node main"><b>API</b><span>Express · 인증 통합</span></div></div>
+<div class="link l2" aria-hidden="true"></div>
+<div class="stack s3"><div class="node"><b>일기 저장</b><span>SQLite</span></div><div class="node ext"><b>Google</b><span>OAuth 로그인</span></div></div>
+</div>
+<div class="legend"><span><i></i>직접 만든 부분</span><span><i class="e"></i>외부 서비스</span></div>
+</div>
+<div class="gh"><a class="btn fill" href="https://github.com/sonseungah/diary" target="_blank" rel="noopener">GitHub 보기 ↗</a></div>
+</section>
+</main>
+<a class="next wrap" href="schedule.html"><span><span class="k">다음 프로젝트</span><span class="t">스케줄링</span></span><span class="arrow" aria-hidden="true">→</span></a>
+<footer class="contact" id="contact"><div class="wrap contact-in">
+<h2>함께 일할<br>자리를 찾고 있어요.</h2>
+<div class="links">
+<a href="mailto:disket0882@gmail.com">disket0882@gmail.com ↗</a>
+<a href="https://github.com/sonseungah" target="_blank" rel="noopener">github.com/sonseungah ↗</a>
+<a href="https://github.com/eggkun1223" target="_blank" rel="noopener">github.com/eggkun1223 ↗</a>
+</div></div></footer>
+</body>
+</html>

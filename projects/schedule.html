@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스케줄링 | 손승아 포트폴리오</title>
+<meta name="description" content="스케줄링: 스트리머 방송 일정을 내 캘린더로">
+<meta property="og:title" content="스케줄링 | 손승아 포트폴리오">
+<meta property="og:description" content="스케줄링: 스트리머 방송 일정을 내 캘린더로">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="wrap"><nav>
+<a class="logo" href="../index.html">SA<i>.</i></a>
+<a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+<div class="menu"><a href="../index.html#projects">프로젝트</a><a href="../index.html#career">경력</a><a href="../index.html#contact">연락처</a></div>
+</nav></header>
+<main class="wrap detail">
+<div class="head">
+<div>
+<p class="tag">프로젝트 2 / 4</p>
+<h1 class="dh">스케줄링</h1>
+<p class="one">스트리머 방송 일정을 내 캘린더로</p>
+<div class="pills"><span class="pill">React</span><span class="pill">Vite</span><span class="pill">Express</span><span class="pill">JWT</span><span class="pill">MySQL</span><span class="pill">iCalendar</span></div>
+</div>
+<dl class="meta"><dt>기간</dt><dd>2026.04</dd><dt>역할</dt><dd>기획 · 개발 전체</dd><dt>형태</dt><dd>웹 + 캘린더 구독</dd></dl>
+</div>
+<div class="dhero"><img class="web" src="../assets/calender-channel.png" alt="스케줄링 채널 달력 화면"></div>
+
+<section class="dsec">
+<p class="tag">개요</p>
+<h2>동기 · 구현 · 트러블슈팅</h2>
+<div class="three">
+<div><p class="k">동기</p><p class="v">채널마다 흩어진 방송 일정을 한곳에서 확인하기 어려운 문제. 표준 캘린더 형식(.ics)으로 제공해 기존 캘린더 앱에서 바로 구독하도록 설계</p></div>
+<div><p class="k">구현</p><p class="v">Next.js 단일 구조를 React 프런트엔드·Express API·MySQL로 분리, JWT 인증, 스트리머별 .ics 구독 피드와 팔로우 기능 구현</p></div>
+<div><p class="k">트러블슈팅</p><p class="v">MySQL DATE 값이 시간대 변환을 거치며 하루씩 밀리는 문제. DB 연결 설정에서 날짜 컬럼을 문자열로 받도록 변경해 해결</p></div>
+</div>
+</section>
+
+<section class="dsec">
+<p class="tag">구조</p>
+<h2>표준 캘린더 형식으로 구독</h2>
+<div class="dia">
+<div class="cols">
+<p class="colh c1">화면</p><p class="colh c2">서버 · 인증</p><p class="colh c3">저장 · 외부</p>
+<div class="stack s1"><div class="node"><b>스케줄링 웹</b><span>React · Vite</span></div><div class="node ext"><b>캘린더 앱</b><span>Google · Apple</span></div></div>
+<div class="link l1" aria-hidden="true"><em>JWT · 구독</em></div>
+<div class="stack s2"><div class="node main"><b>API</b><span>Express</span></div><div class="node"><b>.ics 피드</b><span>스트리머별</span></div></div>
+<div class="link l2" aria-hidden="true"></div>
+<div class="stack s3"><div class="node"><b>일정 저장</b><span>MySQL</span></div></div>
+</div>
+<div class="legend"><span><i></i>직접 만든 부분</span><span><i class="e"></i>외부 서비스</span></div>
+</div>
+<div class="gh"><a class="btn fill" href="https://github.com/sonseungah/calender" target="_blank" rel="noopener">GitHub 보기 ↗</a></div>
+</section>
+</main>
+<a class="next wrap" href="dashboard.html"><span><span class="k">다음 프로젝트</span><span class="t">PC 모니터링 대시보드</span></span><span class="arrow" aria-hidden="true">→</span></a>
+<footer class="contact" id="contact"><div class="wrap contact-in">
+<h2>함께 일할<br>자리를 찾고 있어요.</h2>
+<div class="links">
+<a href="mailto:disket0882@gmail.com">disket0882@gmail.com ↗</a>
+<a href="https://github.com/sonseungah" target="_blank" rel="noopener">github.com/sonseungah ↗</a>
+<a href="https://github.com/eggkun1223" target="_blank" rel="noopener">github.com/eggkun1223 ↗</a>
+</div></div></footer>
+</body>
+</html>

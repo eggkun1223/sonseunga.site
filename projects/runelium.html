@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>루넬리움 | 손승아 포트폴리오</title>
+<meta name="description" content="루넬리움: 아는 사람만 들어오는 팬 창작 소설 서재">
+<meta property="og:title" content="루넬리움 | 손승아 포트폴리오">
+<meta property="og:description" content="루넬리움: 아는 사람만 들어오는 팬 창작 소설 서재">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="wrap"><nav>
+<a class="logo" href="../index.html">SA<i>.</i></a>
+<a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+<div class="menu"><a href="../index.html#projects">프로젝트</a><a href="../index.html#career">경력</a><a href="../index.html#contact">연락처</a></div>
+</nav></header>
+<main class="wrap detail">
+<div class="head">
+<div>
+<p class="tag">프로젝트 4 / 4</p>
+<h1 class="dh">루넬리움</h1>
+<p class="one">아는 사람만 들어오는 팬 창작 소설 서재</p>
+<div class="pills"><span class="pill">React</span><span class="pill">Vite</span><span class="pill">Supabase</span><span class="pill">RLS</span><span class="pill">GitHub Actions</span></div>
+</div>
+<dl class="meta"><dt>기간</dt><dd>2026.09</dd><dt>역할</dt><dd>기획 · 개발 전체</dd><dt>형태</dt><dd>비공개 웹 서재</dd></dl>
+</div>
+<div class="dhero"><img class="web" src="../assets/runelium-gate.png" alt="루넬리움 입장 화면"></div>
+
+<section class="dsec">
+<p class="tag">개요</p>
+<h2>동기 · 구현 · 트러블슈팅</h2>
+<div class="three">
+<div><p class="k">동기</p><p class="v">흩어진 팬 창작 소설을 한곳에서 읽는 비공개 서재. 가입 절차 없이 지정된 사람만 접근하도록 입장 질문 방식 채택</p></div>
+<div><p class="k">구현</p><p class="v">React 서재·리더 화면, Supabase 스키마와 RLS 정책 설계, 읽기 진도·책갈피·댓글 기능, GitHub Actions 배포와 커스텀 도메인 연결</p></div>
+<div><p class="k">트러블슈팅</p><p class="v">회원 가입 없이 댓글 작성자를 구분해야 하는 문제. 익명 세션마다 고정 작성자 번호를 부여해 해결</p></div>
+</div>
+</section>
+
+<section class="dsec">
+<p class="tag">구조</p>
+<h2>가입 없이, 정해진 사람만</h2>
+<div class="dia">
+<div class="cols">
+<p class="colh c1">화면</p><p class="colh c2">서버 · 인증</p><p class="colh c3">저장 · 외부</p>
+<div class="stack s1"><div class="node"><b>입장 질문</b><span>아는 사람만</span></div><div class="node"><b>서재 웹</b><span>React</span></div></div>
+<div class="link l1" aria-hidden="true"><em>익명 세션</em></div>
+<div class="stack s2"><div class="node ext"><b>익명 로그인</b><span>Supabase Auth</span></div><div class="node main"><b>권한 규칙</b><span>RLS 정책</span></div></div>
+<div class="link l2" aria-hidden="true"></div>
+<div class="stack s3"><div class="node"><b>작품 · 댓글</b><span>Postgres</span></div></div>
+</div>
+<div class="legend"><span><i></i>직접 만든 부분</span><span><i class="e"></i>외부 서비스</span></div>
+</div>
+<div class="gh"><a class="btn" href="https://library.runellium.co.kr" target="_blank" rel="noopener">사이트 보기 ↗</a><a class="btn fill" href="https://github.com/eggkun1223/runelium" target="_blank" rel="noopener">GitHub 보기 ↗</a></div>
+</section>
+</main>
+<a class="next wrap" href="haru.html"><span><span class="k">다음 프로젝트</span><span class="t">하루</span></span><span class="arrow" aria-hidden="true">→</span></a>
+<footer class="contact" id="contact"><div class="wrap contact-in">
+<h2>함께 일할<br>자리를 찾고 있어요.</h2>
+<div class="links">
+<a href="mailto:disket0882@gmail.com">disket0882@gmail.com ↗</a>
+<a href="https://github.com/sonseungah" target="_blank" rel="noopener">github.com/sonseungah ↗</a>
+<a href="https://github.com/eggkun1223" target="_blank" rel="noopener">github.com/eggkun1223 ↗</a>
+</div></div></footer>
+</body>
+</html>
