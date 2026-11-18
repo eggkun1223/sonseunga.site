@@ -55,6 +55,10 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
 .pcard:hover .shot{background:#E9EDF8}
 .pcard:hover .shot img{transform:translateY(-6px)}
 .pcard:hover .arrow{transform:rotate(45deg)}
+.pcard.wide{grid-column:1/-1}
+.pcard.wide .shot{aspect-ratio:auto;height:460px;display:grid;grid-template-columns:1.45fr 1fr;gap:28px;align-items:start}
+.pcard.wide .shot img{height:100%;object-fit:cover;object-position:left top}
+.pcard.wide .shot img.sub{margin-top:48px}
 .pcard h3{font-size:24px;font-weight:800;letter-spacing:-.03em;margin-top:22px}
 .pcard .d{font-size:14px;color:var(--sub);margin-top:6px}
 
@@ -99,6 +103,10 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
 .dhero .web{width:100%;display:block;border-radius:12px 12px 0 0;box-shadow:0 16px 48px rgba(22,36,92,.14)}
 .dhero.has-phone{padding-right:22%}
 .dhero .phone{position:absolute;right:5%;top:56px;width:18%;border-radius:18px;box-shadow:0 16px 48px rgba(22,36,92,.2);border:6px solid #fff}
+.dextra{margin:28px 0 0}
+.dextra figcaption{font-size:14px;color:var(--sub);line-height:1.8;margin-top:16px}
+.three .v+.v{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.note{align-self:center;font-size:13px;color:var(--mute)}
 .dsec{padding-top:88px}
 .dsec h2{font-size:clamp(24px,2.6vw,30px);font-weight:800;letter-spacing:-.035em;margin-top:14px}
 .three{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:2px solid var(--navy)}
@@ -162,6 +170,8 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
   nav{height:64px}
   .grid{grid-template-columns:1fr;gap:44px}
   .pcard .shot{padding:24px 24px 0}
+  .pcard.wide .shot{height:auto;aspect-ratio:16/10.5;grid-template-columns:1fr}
+  .pcard.wide .shot img.sub{display:none}
   .sec{padding:72px 0}
   .sechead{flex-direction:column;align-items:flex-start;gap:8px}
   .row{grid-template-columns:1fr;gap:6px}

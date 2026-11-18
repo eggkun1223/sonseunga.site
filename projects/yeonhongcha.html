@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연홍차봇 | 손승아 포트폴리오</title>
+<meta name="description" content="연홍차봇: 치지직 스트리머 전용 채팅봇과 소개·관리 페이지">
+<meta property="og:title" content="연홍차봇 | 손승아 포트폴리오">
+<meta property="og:description" content="연홍차봇: 치지직 스트리머 전용 채팅봇과 소개·관리 페이지">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="wrap"><nav>
+<a class="logo" href="../index.html">SA<i>.</i></a>
+<a class="back" href="../index.html#projects">← 프로젝트 목록</a>
+<div class="menu"><a href="../index.html#projects">프로젝트</a><a href="../index.html#career">경력</a><a href="../index.html#contact">연락처</a></div>
+</nav></header>
+<main class="wrap detail">
+<div class="head">
+<div>
+<p class="tag">프로젝트 1 / 5</p>
+<h1 class="dh">연홍차봇</h1>
+<p class="one">치지직 스트리머 전용 채팅봇과 소개·관리 페이지</p>
+<div class="pills"><span class="pill">Node.js</span><span class="pill">pm2</span><span class="pill">치지직 API</span><span class="pill">AWS EC2</span><span class="pill">S3 · CloudFront</span><span class="pill">Cloudflare Tunnel</span></div>
+</div>
+<dl class="meta"><dt>기간</dt><dd>2026.10 – 운영 중</dd><dt>역할</dt><dd>기획 · 개발 전체</dd><dt>형태</dt><dd>채팅봇 + 웹 · 실서비스</dd></dl>
+</div>
+<div class="dhero"><img class="web" src="../assets/yeonhongcha-home.jpg" alt="연홍차봇 소개 페이지 첫 화면"></div>
+<figure class="dextra"><div class="dhero"><img class="web" src="../assets/yeonhongcha-admin.png" alt="연홍차봇 관리 페이지 화면"></div><figcaption>관리 페이지 · 치지직 로그인으로 스트리머와 관리자만 접근. 출석 인사·명령어 편집, 봇 활동 스위치, 실시간 출석, 주간 트래픽 리포트</figcaption></figure>
+
+<section class="dsec">
+<p class="tag">개요</p>
+<h2>동기 · 구현 · 트러블슈팅</h2>
+<div class="three">
+<div><p class="k">동기</p><p class="v">한 스트리머 채널을 위한 출석 인사·명령어 답장 채팅봇과, 방송 상태·일정·인기 클립을 모아 보여 주는 소개 페이지의 필요. 2026.10.08 방송부터 실제 운영</p></div>
+<div><p class="k">구현</p><p class="v">Node.js 단일 프로세스(pm2)로 봇과 웹 운영. 방송 세션 단위 출석 기록, 변수 치환 명령어, 방송 시작·종료 자동 감지, 치지직 로그인 기반 관리 페이지. 웹서버는 외부에 열지 않고 Cloudflare 터널로만 연결, 주간 백업과 트래픽 리포트 자동화</p></div>
+<div><p class="k">트러블슈팅</p><p class="v">외부 유입으로 방문이 하루 약 500회로 급증하며 사진 로딩이 5초 이상 지연. 사진을 WebP로 줄이고 S3 · CloudFront 서울 거점으로 분리해 0.06초로 단축</p><p class="v">치지직 날짜가 시간대 없이 전달돼 팔로우 일수·업타임이 9시간 어긋나는 문제. 서버 시간대를 KST로 통일해 해결</p></div>
+</div>
+</section>
+
+<section class="dsec">
+<p class="tag">구조</p>
+<h2>웹서버는 닫고, 터널로만</h2>
+<div class="dia">
+<div class="cols">
+<p class="colh c1">화면</p><p class="colh c2">서버 · 인증</p><p class="colh c3">저장 · 외부</p>
+<div class="stack s1"><div class="node"><b>소개 페이지</b><span>방문자</span></div><div class="node"><b>관리 페이지</b><span>치지직 로그인</span></div></div>
+<div class="link l1" aria-hidden="true"><em>HTTPS</em></div>
+<div class="stack s2"><div class="node ext"><b>Cloudflare</b><span>터널 · 보호</span></div><div class="node main"><b>봇 서버</b><span>AWS · Node.js</span></div></div>
+<div class="link l2" aria-hidden="true"></div>
+<div class="stack s3"><div class="node ext"><b>치지직</b><span>API · 채팅</span></div><div class="node"><b>사진</b><span>S3 · CloudFront</span></div></div>
+</div>
+<div class="legend"><span><i></i>직접 만든 부분</span><span><i class="e"></i>외부 서비스</span></div>
+</div>
+<div class="gh"><a class="btn fill" href="https://www.runellium.co.kr" target="_blank" rel="noopener">사이트 보기 ↗</a><span class="note">코드는 비공개 저장소</span></div>
+</section>
+</main>
+<a class="next wrap" href="haru.html"><span><span class="k">다음 프로젝트</span><span class="t">하루</span></span><span class="arrow" aria-hidden="true">→</span></a>
+<footer class="contact" id="contact"><div class="wrap contact-in">
+<h2>함께 일할<br>자리를 찾고 있어요.</h2>
+<div class="links">
+<a href="mailto:disket0882@gmail.com">disket0882@gmail.com ↗</a>
+<a href="https://github.com/sonseungah" target="_blank" rel="noopener">github.com/sonseungah ↗</a>
+<a href="https://github.com/eggkun1223" target="_blank" rel="noopener">github.com/eggkun1223 ↗</a>
+</div></div></footer>
+</body>
+</html>
