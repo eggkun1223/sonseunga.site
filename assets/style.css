@@ -250,3 +250,11 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
   .js .hero.in .lead{animation-delay:.34s}
   .js .hero.in .now{animation-delay:.42s}
 }
+
+/* 경력: 회사 안의 근무지 */
+.row .site{margin-top:18px;padding:18px 20px;border-left:3px solid var(--navy);background:var(--tint);border-radius:0 12px 12px 0}
+.site-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.site-h b{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.site-h span{font-size:13px;color:var(--mute);font-weight:600}
+.site-t{font-size:13.5px;color:var(--navy2);font-weight:600;margin-top:4px}
+.row .site ul{margin-top:10px}
