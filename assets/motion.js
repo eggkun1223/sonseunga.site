@@ -2,6 +2,18 @@
 // 완전히 화면 밖으로 나가면 처음 상태로 되돌려 두고, 다시 들어오면 또 재생한다.
 // 움직임 줄이기 설정이면 아무것도 하지 않는다 (CSS도 같은 조건에서만 숨긴다).
 (function () {
+  // 경력 기간: data-since 날짜부터 오늘까지를 'N년 N개월'로 (움직임 설정과 상관없이 항상)
+  document.querySelectorAll('[data-since]').forEach(function (el) {
+    var p = el.getAttribute('data-since').split('-').map(Number);
+    var now = new Date();
+    var months = (now.getFullYear() - p[0]) * 12 + (now.getMonth() + 1 - p[1]) - (now.getDate() < p[2] ? 1 : 0);
+    if (months < 0) months = 0;
+    var y = Math.floor(months / 12), m = months % 12;
+    var ys = el.querySelector('[data-part="y"]'), ms = el.querySelector('[data-part="m"]');
+    if (ys) { ys.dataset.count = y; ys.textContent = y; ys.parentNode.hidden = y === 0; }
+    if (ms) { ms.dataset.count = m; ms.textContent = m; ms.parentNode.hidden = m === 0 && y > 0; }
+  });
+
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { document.documentElement.classList.remove('js'); return; }
 
