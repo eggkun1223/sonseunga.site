@@ -1,38 +1,59 @@
-// 움직임: 운영 주기 그림이 화면에 들어올 때 채워지고, 첫 화면 숫자가 올라간다.
+// 움직임: 운영 주기 그림과 첫 화면이 화면에 들어올 때마다 처음부터 재생된다.
+// 완전히 화면 밖으로 나가면 처음 상태로 되돌려 두고, 다시 들어오면 또 재생한다.
 // 움직임 줄이기 설정이면 아무것도 하지 않는다 (CSS도 같은 조건에서만 숨긴다).
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { document.documentElement.classList.remove('js'); return; }
 
-  // 1. 운영 주기 그림
-  var cycles = document.querySelectorAll('.cycle');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0, rootMargin: "0px 0px -15% 0px" });
-    cycles.forEach(function (c) {
-      // 처음부터 화면 안에 있으면 바로 시작 (관찰 콜백이 늦게 오는 환경 대비)
-      if (c.getBoundingClientRect().top < window.innerHeight * 0.85) {
-        setTimeout(function () { c.classList.add('in'); }, 300);
-      } else { io.observe(c); }
-    });
-  } else {
-    cycles.forEach(function (c) { c.classList.add('in'); });
+  // 첫 화면 숫자 올리기
+  var nums = document.querySelectorAll('.hero [data-count]');
+  var timer = null, wait = null;
+  function countUp() {
+    if (!nums.length) return;
+    clearInterval(timer); clearTimeout(wait);
+    var dur = 1100;
+    var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+    nums.forEach(function (n) { n.textContent = '0'; });
+    wait = setTimeout(function () {
+      var start = Date.now();
+      timer = setInterval(function () {
+        var t = Math.min(1, (Date.now() - start) / dur);
+        nums.forEach(function (n) { n.textContent = Math.round(ease(t) * +n.dataset.count); });
+        if (t >= 1) clearInterval(timer);
+      }, 30);
+    }, 450);
   }
 
-  // 2. 첫 화면 숫자
-  var nums = document.querySelectorAll('[data-count]');
-  if (!nums.length) return;
-  var dur = 1100, start = null;
-  var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
-  nums.forEach(function (n) { n.textContent = '0'; });
-  function step(ts) {
-    if (start === null) start = ts;
-    var t = Math.min(1, (ts - start) / dur);
-    nums.forEach(function (n) { n.textContent = Math.round(ease(t) * +n.dataset.count); });
-    if (t < 1) requestAnimationFrame(step);
+  function play(el) {
+    if (el.classList.contains('in')) return;
+    el.classList.add('in');
+    if (el.classList.contains('hero')) countUp();
   }
-  setTimeout(function () { requestAnimationFrame(step); }, 450);
+  function reset(el) { el.classList.remove('in'); }
+
+  var targets = document.querySelectorAll('.cycle, .hero');
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(play);
+    return;
+  }
+
+  // 들어올 때: 화면 아래쪽 15%를 지나 올라오면 재생
+  var enter = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) play(e.target); });
+  }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+  // 나갈 때: 한 픽셀도 안 보이게 되면 처음 상태로
+  var leave = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (!e.isIntersecting) reset(e.target); });
+  }, { threshold: 0 });
+
+  targets.forEach(function (el) {
+    // 처음부터 화면 안에 있으면 바로 시작 (관찰 콜백이 늦게 오는 환경 대비)
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.85 && r.bottom > 0) {
+      setTimeout(function () { play(el); }, el.classList.contains('hero') ? 0 : 300);
+    }
+    enter.observe(el);
+    // data-once 가 붙은 그림(구축·운영 상세 페이지)은 한 번만 재생하고 되돌리지 않는다
+    if (!el.hasAttribute('data-once')) leave.observe(el);
+  });
 })();
