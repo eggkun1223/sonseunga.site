@@ -29,7 +29,7 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
 /* hero */
 .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:end;padding-top:112px;padding-bottom:104px}
 .hero h1{white-space:nowrap;font-size:clamp(32px,5.2vw,66px);line-height:1.18;font-weight:800;letter-spacing:-.045em;margin-top:22px}
-.hero h1 span{color:var(--navy)}
+.hero h1 .hl{color:var(--navy)}
 .lead{font-size:15px;line-height:1.85;color:var(--sub);margin-top:28px}
 .lead b{color:var(--ink)}
 .now{border:1px solid var(--line);border-radius:20px;padding:28px 30px;background:var(--tint)}
@@ -39,6 +39,7 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
 .nums{display:flex;gap:32px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
 .nums b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;color:var(--navy)}
 .nums span{font-size:12px;color:var(--mute)}
+.nums b span{font-size:inherit;color:inherit;font-variant-numeric:tabular-nums}
 
 /* sections */
 .sec{padding:104px 0;border-top:1px solid var(--line)}
@@ -184,3 +185,66 @@ nav{display:flex;justify-content:space-between;align-items:center;height:76px;bo
   .back{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* 구축 · 운영 : 연간 운영 주기 그림 */
+.opsshot{height:auto!important;aspect-ratio:auto!important;background:var(--navy)!important;display:flex!important;align-items:center;justify-content:center;padding:40px 56px!important}
+.pcard.ops:hover .opsshot{background:#1C2D6E!important}
+.cycle{width:100%;max-width:900px;color:#fff}
+.cycle-t{font-size:13px;font-weight:700;color:#AEB9E6;margin-bottom:18px}
+.cy-head,.cy-row{display:grid;grid-template-columns:190px 1fr 64px;gap:16px;align-items:center}
+.cy-head{font-size:12px;color:#8E9AD0;padding-bottom:10px}
+.cy-head .qs{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.cy-row{padding:12px 0;border-top:1px solid rgba(255,255,255,.12)}
+.cy-row b{font-size:14px;font-weight:700}
+.cy-row em{font-style:normal;font-size:12px;font-weight:700;color:#C9D2F2;text-align:right}
+.cy-bar{position:relative;height:26px;border-radius:8px;background:rgba(255,255,255,.06)}
+.cy-bar .full{position:absolute;inset:4px;border-radius:6px;background:var(--accent)}
+.cy-bar .full.lt{background:rgba(91,123,255,.45)}
+.cy-bar.q{display:grid;grid-template-columns:repeat(4,1fr);place-items:center}
+.cy-bar .dot{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+.cy-bar.once .full{background:transparent;border:1.5px dashed rgba(255,255,255,.55)}
+.dhero.opshero{background:var(--navy);padding:56px 64px;display:flex;justify-content:center}
+.opsnote{font-size:13px;color:var(--mute);margin-top:16px}
+.row .more{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--navy)}
+.row .more:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:640px){
+  .opsshot{padding:24px 18px!important;aspect-ratio:auto!important}
+  .dhero.opshero{padding:28px 18px}
+  .cy-head,.cy-row{grid-template-columns:1fr 44px;gap:6px 10px}
+  .cy-head>span:first-child{display:none}
+  .cy-head .qs{grid-column:1}
+  .cy-row b{grid-column:1/-1;font-size:13px}
+  .cy-bar{grid-column:1}
+}
+
+/* 움직임 (스크립트가 켜져 있고, 움직임 줄이기가 아닐 때만) */
+@media (prefers-reduced-motion:no-preference){
+  /* 운영 주기: 막대가 왼쪽부터 차오르고, 백업 점이 분기 순서대로 켜진다 */
+  .js .cycle .cy-bar .full{transform:scaleX(0);transform-origin:left center;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .js .cycle .cy-row:nth-of-type(2) .full{transition-delay:0s}
+  .js .cycle .cy-row:nth-of-type(3) .full{transition-delay:.2s}
+  .js .cycle .cy-bar .dot{transform:scale(0);opacity:0;transition:transform .45s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+  .js .cycle .cy-bar .dot:nth-child(1){transition-delay:.8s}
+  .js .cycle .cy-bar .dot:nth-child(2){transition-delay:1.05s}
+  .js .cycle .cy-bar .dot:nth-child(3){transition-delay:1.3s}
+  .js .cycle .cy-bar .dot:nth-child(4){transition-delay:1.55s}
+  .js .cycle .cy-bar.once .full{transform:none;clip-path:inset(0 100% 0 0);transition:clip-path .9s ease 1.85s}
+  .js .cycle .cy-row em{opacity:0;transition:opacity .4s ease}
+  .js .cycle .cy-row:nth-of-type(2) em{transition-delay:.9s}
+  .js .cycle .cy-row:nth-of-type(3) em{transition-delay:1.1s}
+  .js .cycle .cy-row:nth-of-type(4) em{transition-delay:1.8s}
+  .js .cycle .cy-row:nth-of-type(5) em{transition-delay:2.6s}
+  .js .cycle.in .cy-bar .full{transform:scaleX(1)}
+  .js .cycle.in .cy-bar .dot{transform:scale(1);opacity:1}
+  .js .cycle.in .cy-bar.once .full{clip-path:inset(0 0 0 0)}
+  .js .cycle.in .cy-row em{opacity:1}
+
+  /* 첫 화면: 제목이 한 줄씩 올라오고, 오른쪽 카드가 뒤따른다 */
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .js .hero .tag,.js .hero h1 .ln,.js .hero .lead,.js .hero .now{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .js .hero h1 .ln{display:inline-block}
+  .js .hero h1 .ln:nth-of-type(1){animation-delay:.08s}
+  .js .hero h1 .ln:nth-of-type(2){animation-delay:.2s}
+  .js .hero .lead{animation-delay:.34s}
+  .js .hero .now{animation-delay:.42s}
+}
